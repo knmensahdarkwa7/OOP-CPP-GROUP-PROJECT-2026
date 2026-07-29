@@ -97,7 +97,7 @@ int main() {
     int tries = 0;
 
     cout << "Welcome to group 29's OOP group work" << endl;
-    cout << " Are you:\n    1. Librarian mode or\n    2. User mode " << endl;
+    cout << " Are you:\n    1. Librarian mode or\n    2. User mode \n:";
     cin >> answer;
 
     if(answer == "1") { // Librarian Mode
@@ -128,13 +128,11 @@ int main() {
 void runLib() {
     while(true) {
         cout << "Running Librarian Dashboard...\n";
-        break; // Added break so it doesn't infinite loop during testing
     }
 }
 
 void runUser() {
     while(true) {
         cout << "Running User Dashboard...\n";
-        break; // Added break so it doesn't infinite loop during testing
     }
 }
