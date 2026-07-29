@@ -1,147 +1,140 @@
 #include <iostream>
+#include <string>
 using namespace std;
 
+void runLib();
+void runUser();
 
-class Book{
+class Book {
     string title;
     string author;
     
-    public:
-    Book():title("N/A"),author("N/A"){}
+public:
+    Book() : title("N/A"), author("N/A") {}
 
-
-    void setbook(){
-        cout<<"Enter the name of book: ";
-        cin>> title;
-        cout<< "Enter the author of the book: ";
-        cin>> author;
+    void setbook() {
+        cout << "Enter the name of book: ";
+        cin >> title;
+        cout << "Enter the author of the book: ";
+        cin >> author;
     }
 
     ~Book();
-
 };
 
 Book::~Book() {
     // no special cleanup required
 }
 
-class User{
-    private:
+class User {
+private:
     string name;
     string user_password;
+    string correct_password; // Fixed: keep the correct password separate
 
-    public:
-    User():user_password("user"),name("UserJohn"){}
-    void returnbook(Book& ob){
+public:
+    User() : correct_password("user"), name("UserJohn"), user_password("") {}
+
+    void returnbook(Book& ob) {
         ob.setbook();
     }
 
-    bool verify_password(){
-        if(user_password == "user"){
-            cout<<"correct password";
+    bool verify_password() {
+        if(user_password == correct_password) {
+            cout << "correct password\n";
             return true;
-        }
-        else{
-            cout<<"you have entered the wrong password"<<endl;
-            cout<<"Try again"<< endl;
+        } else {
+            cout << "you have entered the wrong password\n";
+            cout << "Try again\n";
             return false;
         }
-        
-    }
-    bool EnterPassword(){
-        cout<<"Enter your password: ";
-        cin>> user_password;
     }
 
-
+    bool EnterPassword() {
+        cout << "Enter your password: ";
+        cin >> user_password;
+        return true;
+    }
 };
 
-class Libarian{
-    private:
+class Librarian { // Fixed spelling from Libarian
+private:
     string name;
     Book obj; 
-    string Libarian_password;
+    string librarian_password;
+    string correct_password;
 
-    public:
-    Libarian():Libarian_password("lib"),name("LibJohn"){}
+public:
+    Librarian() : correct_password("lib"), name("LibJohn"), librarian_password("") {}
 
-    void issue_book(Book& ob){
+    void issue_book(Book& ob) {
         ob.setbook();
-        cout<< "The book has been issued";
+        cout << "The book has been issued\n";
     }
 
-    bool verify_password(){
-        if(Libarian_password == "lib"){
-            cout<<"correct password";
+    bool verify_password() {
+        if(librarian_password == correct_password) {
+            cout << "correct password\n";
             return true;
-        }
-        else{
-            cout<<"you have entered the wrong password"<<endl;
-            cout<< "Try again";
+        } else {
+            cout << "you have entered the wrong password\n";
+            cout << "Try again\n";
             return false;
         }
-        
     }
 
-    bool EnterPassword(){
-        cout<<"Enter your password: ";
-        cin>> Libarian_password;
+    bool EnterPassword() {
+        cout << "Enter your password: ";
+        cin >> librarian_password;
+        return true;
     }
-
 };
 
-int main(){
-    Libarian l1;
+int main() {
+    Librarian l1;
     User u1;
     string answer;
     int tries = 0;
 
-    cout<<"Welcome to group 29's OOP group work"<<endl;
-    cout<<" Are you:\n    1.user mode or\n    2.Librarian mode "<<endl;
-    cin>>answer;
-    if(answer  == "1"){
-        do{
+    cout << "Welcome to group 29's OOP group work" << endl;
+    cout << " Are you:\n    1. Librarian mode or\n    2. User mode " << endl;
+    cin >> answer;
+
+    if(answer == "1") { // Librarian Mode
+        do {
             l1.EnterPassword();
-            l1.verify_password();
-            if(l1.verify_password() == true){
+            if(l1.verify_password() == true) {
                 runLib();
                 break;
             }
             tries += 1;
-            
-        }while(tries < 5);
+        } while(tries < 5);
     }
-    else if (answer == "2")
-    {
-        do{
+    else if (answer == "2") { // User Mode
+        do {
             u1.EnterPassword();
-            u1.verify_password();
-            if(u1.verify_password() == true){
+            if(u1.verify_password() == true) {
                 runUser();
                 break;
             }
             tries += 1;
-            
-        }while(tries < 5);
+        } while(tries < 5);
     }
 
-    cout<< "Byeeee";
-
+    cout << "Byeeee\n";
     return 0;
-
 }
 
-void runLib(){
-    while(true){
-        cout<<"run Lib";
-        //finish morrow
-    }
-
-}
-void runUser(){
-    while(true){
-        cout<< "run Lib";
-        //finish morrow
+void runLib() {
+    while(true) {
+        cout << "Running Librarian Dashboard...\n";
+        break; // Added break so it doesn't infinite loop during testing
     }
 }
 
+void runUser() {
+    while(true) {
+        cout << "Running User Dashboard...\n";
+        break; // Added break so it doesn't infinite loop during testing
+    }
+}
