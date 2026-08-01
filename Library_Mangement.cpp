@@ -2,6 +2,12 @@
 #include <string>
 using namespace std;
 
+//variables used
+/*Book- title , author.
+User- name, user_password , correct_password .
+Librarian: name, obj , librarian_password , correct_password .
+main()- l1 , u1, answer (mode selection choice), tries (failed login attempt counter).*/
+
 void runLib();
 void runUser();
 
