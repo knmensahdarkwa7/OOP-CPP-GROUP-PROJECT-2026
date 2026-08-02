@@ -193,7 +193,7 @@ int main() {
 
     while (true) {
         cout << "\n=========================================\n";
-        cout << " Welcome to Group 29's Library System\n";
+        cout << " Welcome to Group 2's Library System\n";
         cout << "=========================================\n";
         cout << "1. Librarian Mode\n";
         cout << "2. User Mode\n";
@@ -265,7 +265,7 @@ void runLib(Book library[], int &bookCount) {
         cout << "2. Issue a Book to User\n";
         cout << "3. View All Books in Catalog\n";
         cout << "4. Logout / Exit Dashboard\n";
-        cout << "Enter your choice (1-4): ";
+        cout << "Enter your choice: ";
         cin >> choice;
 
         if (choice == 1) {
