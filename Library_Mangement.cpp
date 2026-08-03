@@ -268,6 +268,13 @@ void runLib(Book library[], int &bookCount) {
         cout << "Enter your choice: ";
         cin >> choice;
 
+        if (cin.fail()) {
+            cin.clear();
+            cin.ignore(10000, '\n');
+            cout << "Invalid input! Please enter a number.\n";
+            continue;
+        }
+
         if (choice == 1) {
             admin.add_book(library, bookCount, MAX_BOOKS);
         } else if (choice == 2) {
@@ -296,6 +303,13 @@ void runUser(Book library[], int &bookCount) {
         cout << "3. Logout / Exit Dashboard\n";
         cout << "Enter your choice (1-3): ";
         cin >> choice;
+
+        if (cin.fail()) {
+            cin.clear();
+            cin.ignore(10000, '\n');
+            cout << "Invalid input! Please enter a number.\n";
+            continue;
+        }
 
         if (choice == 1) {
             displayAllBooks(library, bookCount);
